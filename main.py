@@ -66,3 +66,19 @@ def get_checkin_date():
 
 checkin_date = get_checkin_date()  # Get the numeric value
 print(f"Valid checkin date entered: {checkin_date.strftime('%d.%m.%Y')}")
+
+# Enter checkout  date
+def get_checkout_date():
+    while True:
+        checkout_date = input("Enter checkout date in format DD.MM.YYYY: ").strip()
+        print(f"Received input: {checkout_date}")  # Debugging print statement
+        try:
+            # try to parse the input string to a date
+            parsed_date = datetime.strptime(checkout_date, "%d.%m.%Y")
+            return parsed_date
+        except ValueError as e:
+            print(f"Error: {e}")
+            print("Error: Please enter a valid date in format DD.MM.YYYY.")
+
+checkout_date = get_checkout_date()  # Get the numeric value
+print(f"Valid checkout date entered: {checkout_date.strftime('%d.%m.%Y')}")
