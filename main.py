@@ -50,3 +50,19 @@ def get_apartment_ID():
                     
 apartment_ID = get_apartment_ID()   
 
+from datetime import datetime
+# Enter checkin date
+def get_checkin_date():
+    while True:
+        checkin_date = input("Enter checkin date in format DD.MM.YYYY: ").strip()
+        print(f"Received input: {checkin_date}")  # Debugging print statement
+        try:
+            # try to parse the input string to a date
+            parsed_date = datetime.strptime(checkin_date, "%d.%m.%Y")
+            return parsed_date
+        except ValueError as e:
+            print(f"Error: {e}")
+            print("Error: Please enter a valid date in format DD.MM.YYYY.")
+
+checkin_date = get_checkin_date()  # Get the numeric value
+print(f"Valid checkin date entered: {checkin_date.strftime('%d.%m.%Y')}")
