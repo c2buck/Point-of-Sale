@@ -27,9 +27,19 @@ def get_apartment_ID():
     while True:
         apartment_ID = input("Enter the apartment ID, example Unit 12 Swan building = U12swan: ")
         if apartment_ID.startswith("U"):
-            return apartment_ID
+            #check if the following characters are digits within range 1-99
+            number_part = ''
+            for i in range(1,  len(apartment_ID)):
+                if apartment_ID[i].isdigit():
+                    number_part += apartment_ID[i]
+                else:
+                    break
+            if number_part.isdigit() and 1 <= int(number_part) <= 99:                
+                return apartment_ID
+            else:
+                print("Error: The digits following "U" must be between 1 and 99.")
         else:
-             print ("Error: Apartment ID must start with U for Unit")
+             print ("Error: Apartment ID must start with U for Unit, Unit number and building name for example: 'U12sawn'")
                     
 apartment_ID = get_apartment_ID()   
 
