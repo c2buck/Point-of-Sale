@@ -82,3 +82,15 @@ def get_checkout_date():
 
 checkout_date = get_checkout_date()  # Get the numeric value
 print(f"Valid checkout date entered: {checkout_date.strftime('%d.%m.%Y')}")
+
+#length of stay
+
+def get_length_of_stay():
+    while True:
+        length_of_stay = input("Please enter length of stay: ")
+        if length_of_stay.isdigit() and int(length_of_stay) >= 1:
+            return length_of_stay
+        else:
+            print("Error: Must be at least one night stay") 
+
+length_of_stay = get_length_of_stay()
