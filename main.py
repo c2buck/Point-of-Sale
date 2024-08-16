@@ -1,14 +1,14 @@
 from datetime import datetime
 import math
 
-guest_names = []
-guest_numbers = []
-apartment_IDs = []
-checkin_dates = []
-checkout_dates = []
-length_of_stays = []
-total_costs = []
-reward_points_list = []
+guest_name = ["Alyssa", "luigi"]
+guest_number = []
+apartment_ID = ["U12swan", "U209duck", "U49goose"]
+checkin_date = []
+checkout_date = []
+length_of_stay = []
+total_cost = []
+reward_points = [20, 32]
 
 # Enter Guests Name
 def get_guest_name():
@@ -122,13 +122,22 @@ booking_date = get_booking_date()  # Get the numeric value
 print(f"Valid booking date entered: {booking_date.strftime('%d.%m.%Y')}")
 
 #calculate total cost
-def get_total_cost(length_of_stay):
-    apartment_rate = 200
-    total_cost = apartment_rate * length_of_stay
-    print(f"Length of stay is {length_of_stay} night(s) = ${total_cost}")
+def get_total_cost(apartment_ID, length_of_stay):
+    apartment_rate = {
+        "U12swan": 95.0,
+        "U209duck": 106.6,
+        "U49goose": 145.2
+    }
+    rate = apartment_rate.get(apartment_ID)
+    if rate is None:
+        print(f"Error: No rate found for apartment ID '{apartment_ID}")
+        return 0
+
+    total_cost = rate * length_of_stay
+    print(f"Length of stay is {length_of_stay} night(s) = ${total_cost:.2f}")
     return total_cost
 
-total_cost = get_total_cost(length_of_stay)
+total_cost = get_total_cost(apartment_ID, length_of_stay)
 
 #calculate reward points
 def get_reward_points(total_cost):
@@ -157,6 +166,7 @@ def display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checko
     print("-" * 81)
     print(f"Total Cost: ${total_cost}")
     print(f"Reward Points Earned: {reward_points}")
+    print("\nThankyou foir your booking! We hope you will have an enjoyable stay.")
     print("=" * 81)  # End of receipt
     
 # Now, call display_receipt with all the necessary arguments
