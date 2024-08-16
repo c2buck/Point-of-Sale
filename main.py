@@ -80,38 +80,32 @@ apartment_ID = get_apartment_ID()
 def get_checkin_date():
     while True:
         checkin_date = input("Enter checkin date in format DD.MM.YYYY: ").strip()
-        print(f"Received input: {checkin_date}")  # Debugging print statement
         try:
             # try to parse the input string to a date
             parsed_date = datetime.strptime(checkin_date, "%d.%m.%Y")
             return parsed_date
-        except ValueError as e:
-            print(f"Error: {e}")
+        except ValueError:
             print("Error: Please enter a valid date in format DD.MM.YYYY.")
 
 checkin_date = get_checkin_date()  # Get the numeric value
-print(f"Valid checkin date entered: {checkin_date.strftime('%d.%m.%Y')}")
 
 # Enter checkout  date
 def get_checkout_date():
     while True:
         checkout_date = input("Enter checkout date in format DD.MM.YYYY: ").strip()
-        print(f"Received input: {checkout_date}")  # Debugging print statement
         try:
             # try to parse the input string to a date
             parsed_date = datetime.strptime(checkout_date, "%d.%m.%Y")
             return parsed_date
-        except ValueError as e:
-            print(f"Error: {e}")
+        except ValueError:
             print("Error: Please enter a valid date in format DD.MM.YYYY.")
 
 checkout_date = get_checkout_date()  # Get the numeric value
-print(f"Valid checkout date entered: {checkout_date.strftime('%d.%m.%Y')}")
 
 #length of stay
 def get_length_of_stay():
     while True:
-        length_of_stay = input("Please enter length of stay: ")
+        length_of_stay = input("Please enter length of stay in nights: ")
         if length_of_stay.isdigit() and int(length_of_stay) >= 1:
             return int(length_of_stay)
         else:
@@ -180,7 +174,7 @@ def display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checko
     print("-" * 81)
     print(f"Total Cost: ${total_cost}")
     print(f"Reward Points Earned: {reward_points}")
-    print("\nThankyou foir your booking! We hope you will have an enjoyable stay.")
+    print("\nThankyou for your booking! We hope you will have an enjoyable stay.")
     print("=" * 81)  # End of receipt
     
 # Now, call display_receipt with all the necessary arguments
@@ -213,7 +207,7 @@ def add_supp_item():
             if confirmation == 'y':
                 print(f"{supp_item} has been added to your purchase.")
                 guests[guest_name]["supp_items"].append(supp_item) # Add the item to the guest's list of supplementary items
-                
+
                 continue_ordering = input("Would you like to order another supplementary item? (y/n): ").strip().lower()
                 if continue_ordering != 'y':
                     print(f"Thank you for your purchase, {guest_name}.")
