@@ -213,15 +213,16 @@ def add_supp_item():
             if confirmation == 'y':
                 print(f"{supp_item} has been added to your purchase.")
                 guests[guest_name]["supp_items"].append(supp_item) # Add the item to the guest's list of supplementary items
+                
+                continue_ordering = input("Would you like to order another supplementary item? (y/n): ").strip().lower()
+                if continue_ordering != 'y':
+                    print(f"Thank you for your purchase, {guest_name}.")
+                    break  # Exit the loop when the user is done  
         else:
             print("Item not found. Please choose from the available items below:")
             request_supp_item()
 
         # Ask if the user wants to continue ordering supplementary items
-        continue_ordering = input("Would you like to order another supplementary item? (y/n): ").strip().lower()
-        if continue_ordering != 'y':
-            print(f"Thank you for your purchase, {guest_name}.")
-            break  # Exit the loop when the user is done    
 
 add_supp_item()
 
