@@ -84,7 +84,6 @@ checkout_date = get_checkout_date()  # Get the numeric value
 print(f"Valid checkout date entered: {checkout_date.strftime('%d.%m.%Y')}")
 
 #length of stay
-
 def get_length_of_stay():
     while True:
         length_of_stay = input("Please enter length of stay: ")
@@ -94,3 +93,19 @@ def get_length_of_stay():
             print("Error: Must be at least one night stay") 
 
 length_of_stay = get_length_of_stay()
+
+# Enter booking date
+def get_booking_date():
+    while True:
+        booking_date = input("Enter booking date in format DD.MM.YYYY: ").strip()
+        print(f"Received input: {booking_date}")  # Debugging print statement
+        try:
+            # try to parse the input string to a date
+            parsed_date = datetime.strptime(booking_date, "%d.%m.%Y")
+            return parsed_date
+        except ValueError as e:
+            print(f"Error: {e}")
+            print("Error: Please enter a valid date in format DD.MM.YYYY.")
+
+booking_date = get_booking_date()  # Get the numeric value
+print(f"Valid booking date entered: {booking_date.strftime('%d.%m.%Y')}")
