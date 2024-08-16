@@ -17,6 +17,7 @@ item_id = {
     'extra_bed': {'price': 50, 'description': 'per night'}
 }
 
+
 # Enter Guests Name
 def get_guest_name():
     while True:
@@ -29,6 +30,12 @@ def get_guest_name():
 guest_name = get_guest_name()
 print(f"Welcome, {guest_name}!")
 
+#create a guest list to add supp purchases
+guests = {
+    guest_name: {
+        "supp_items": []
+    }
+}
 # Enter number of guests
 def get_number_of_guests():
     while True:
@@ -205,6 +212,7 @@ def add_supp_item():
             confirmation = input(f"Are you sure you want to add {supp_item} to your purchase? ")
             if confirmation == 'y':
                 print(f"{supp_item} has been added to your purchase.")
+                guests[guest_name]["supp_items"].append(supp_item) # Add the item to the guest's list of supplementary items
         else:
             print("Item not found. Please choose from the available items below:")
             request_supp_item()
@@ -212,7 +220,36 @@ def add_supp_item():
         # Ask if the user wants to continue ordering supplementary items
         continue_ordering = input("Would you like to order another supplementary item? (y/n): ").strip().lower()
         if continue_ordering != 'y':
-            print("Thank you for your purchase.")
+            print(f"Thank you for your purchase, {guest_name}.")
             break  # Exit the loop when the user is done    
 
 add_supp_item()
+
+
+# Check what was added for the guest supp order
+print(f"{guest_name} ordered the following supplementary items: {guests[guest_name]['supp_items']}")
+
+# Display receipt
+def display_receipt(guest_name):
+    print("=" * 81)
+    print("\n\t\tServices Apartments - Supplementary item Receipt\n")
+    print("=" * 81)
+
+    supp_items = guests[guest_name]['supp_items']
+    total_cost = 0
+    
+    if supp_items:
+        for item in supp_items:
+            price = item_id[item]['price']
+            description = item_id[item]['description']
+            print(f"Item: {item.capitalize()}, Price: ${price} {description}")
+            total_cost += price
+
+        print("-" * 40)
+        print(f"Total Cost: ${total_cost:.2f}")
+    else:
+        print("=" * 40)
+
+    print("=" * 40)
+
+display_receipt(guest_name)
