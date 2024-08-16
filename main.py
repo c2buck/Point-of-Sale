@@ -41,14 +41,14 @@ def get_apartment_ID():
     while True:
         apartment_ID = input("Enter the apartment ID, example Unit 12 Swan building = U12swan: ")
         if apartment_ID.startswith("U"):
-            #check if the following characters are digits within range 1-99
+            #check if the following characters are digits within range 1-300
             number_part = ''
             for i in range(1,  len(apartment_ID)):
                 if apartment_ID[i].isdigit():
                     number_part += apartment_ID[i]
                 else:
                     break
-            if number_part.isdigit() and 1 <= int(number_part) <= 99:
+            if number_part.isdigit() and 1 <= int(number_part) <= 300:
                 # extract the building name part
                 bldname = apartment_ID[len(number_part) +1:].lower()   # Get the remaining part of the string and convert to lowercase             
                 if bldname in apartment_names:
