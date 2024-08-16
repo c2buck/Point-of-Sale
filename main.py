@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Enter Guests Name
 def get_guest_name():
     while True:
@@ -50,7 +52,6 @@ def get_apartment_ID():
                     
 apartment_ID = get_apartment_ID()   
 
-from datetime import datetime
 # Enter checkin date
 def get_checkin_date():
     while True:
@@ -88,7 +89,7 @@ def get_length_of_stay():
     while True:
         length_of_stay = input("Please enter length of stay: ")
         if length_of_stay.isdigit() and int(length_of_stay) >= 1:
-            return length_of_stay
+            return int(length_of_stay)
         else:
             print("Error: Must be at least one night stay") 
 
@@ -109,3 +110,13 @@ def get_booking_date():
 
 booking_date = get_booking_date()  # Get the numeric value
 print(f"Valid booking date entered: {booking_date.strftime('%d.%m.%Y')}")
+
+#calculate total cost
+def get_total_cost(length_of_stay):
+    apartment_rate = 200
+    total_cost = apartment_rate * length_of_stay
+    print(f"Length of stay is {length_of_stay} night(s) = ${total_cost}")
+    return total_cost
+
+total_cost = get_total_cost(length_of_stay)
+
