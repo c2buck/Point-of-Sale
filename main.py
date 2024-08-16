@@ -11,10 +11,10 @@ total_cost = []
 reward_points = [20, 32]
 
 item_id = {
-    'car_park': 25,
-    'breakfast': 21,
-    'toothpaste': 5,
-    'extra_bed': 50
+    'car_park': {'price': 25, 'description': 'per night'},
+    'breakfast': {'price': 21, 'description': 'per person'},
+    'toothpaste': {'price': 5, 'description': 'per tube'},
+    'extra_bed': {'price': 50, 'description': 'per night'}
 }
 
 # Enter Guests Name
@@ -178,3 +178,41 @@ def display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checko
     
 # Now, call display_receipt with all the necessary arguments
 display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checkout_date, length_of_stay, total_cost, reward_points)
+
+#PART 2 item  2 - supp order
+
+def request_supp_item():
+    while True:
+        supp_item = input("Do you want to order a supplementary item? (y/n): ")
+        if supp_item == "y":
+            for item, details in item_id.items():
+                price = details['price']
+                description = details['description']
+                print(f"Item: {item}, Price: ${price} {description}")
+            break
+        elif supp_item == "n":
+            print("Thankyou for your business")
+            break
+        else:
+            print("Please enter 'y' for yes or 'n' for no.")
+
+request_supp_item()
+
+def add_supp_item():
+    while True:
+        supp_item = input("Which item would you like to add? ").strip().lower()
+        if supp_item in item_id:
+            confirmation = input(f"Are you sure you want to add {supp_item} to your purchase? ")
+            if confirmation == 'y':
+                print(f"{supp_item} has been added to your purchase.")
+        else:
+            print("Item not found. Please choose from the available items below:")
+            request_supp_item()
+
+        # Ask if the user wants to continue ordering supplementary items
+        continue_ordering = input("Would you like to order another supplementary item? (y/n): ").strip().lower()
+        if continue_ordering != 'y':
+            print("Thank you for your purchase.")
+            break  # Exit the loop when the user is done    
+
+add_supp_item()
