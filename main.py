@@ -1,4 +1,5 @@
 from datetime import datetime
+import math
 
 # Enter Guests Name
 def get_guest_name():
@@ -120,3 +121,10 @@ def get_total_cost(length_of_stay):
 
 total_cost = get_total_cost(length_of_stay)
 
+#calculate reward points
+def get_reward_points(total_cost):
+    reward_points = math.ceil(total_cost)
+    print(f"Reward Points earned: {reward_points}")
+    return reward_points
+
+reward_points = get_reward_points(total_cost)
