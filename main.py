@@ -10,6 +10,13 @@ length_of_stay = []
 total_cost = []
 reward_points = [20, 32]
 
+item_id = {
+    'car_park': 25,
+    'breakfast': 21,
+    'toothpaste': 5,
+    'extra_bed': 50
+}
+
 # Enter Guests Name
 def get_guest_name():
     while True:
