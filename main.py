@@ -128,3 +128,27 @@ def get_reward_points(total_cost):
     return reward_points
 
 reward_points = get_reward_points(total_cost)
+
+# Display receipt
+def display_receipt_header():
+    print("=" * 81)
+    print("\n\t\tServices Apartments - Booking Receipts\n")
+    print("=" * 81)
+
+def display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checkout_date, length_of_stay, total_cost, reward_points):
+    display_receipt_header()
+    
+    # Print the guest details and booking information
+    print(f"Guest Name: {guest_name}")
+    print(f"Number of Guests: {guest_number}")
+    print(f"Apartment ID: {apartment_ID}")
+    print(f"Check-in Date: {checkin_date.strftime('%d.%m.%Y')}")
+    print(f"Check-out Date: {checkout_date.strftime('%d.%m.%Y')}")
+    print(f"Length of Stay: {length_of_stay} night(s)")
+    print("-" * 81)
+    print(f"Total Cost: ${total_cost}")
+    print(f"Reward Points Earned: {reward_points}")
+    print("=" * 81)  # End of receipt
+    
+# Now, call display_receipt with all the necessary arguments
+display_receipt(guest_name, guest_number, apartment_ID, checkin_date, checkout_date, length_of_stay, total_cost, reward_points)
