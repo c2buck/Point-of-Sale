@@ -1,6 +1,15 @@
 from datetime import datetime
 import math
 
+guest_names = []
+guest_numbers = []
+apartment_IDs = []
+checkin_dates = []
+checkout_dates = []
+length_of_stays = []
+total_costs = []
+reward_points_list = []
+
 # Enter Guests Name
 def get_guest_name():
     while True:
